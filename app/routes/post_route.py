@@ -9,8 +9,8 @@ def post_routes(app):
         return post_controller.get_posts()
     
     @app.get("/posts/<int:id>")
-    def read_post_by_id(post_id:int):
-        return post_controller.get_one_post_return(post_id)
+    def read_post_by_id(id:int):
+        return post_controller.get_one_post_return(id)
     
     @app.post("/posts")
     def create_post():
@@ -26,7 +26,7 @@ def post_routes(app):
         except InvalidDataUpdateError:
             return {"messege": "Verifique se todos os campos são do tipo String"}, 400
         except PostNotExistError:
-            return {"messege": "Post não encontrado"}, 404
+            return {"messege": f"Post com id {id} não encontrado"}, 404
 
     @app.delete("/posts/<int:id>")
     def delete_post(id:int):

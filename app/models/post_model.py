@@ -29,6 +29,7 @@ class Post:
     @staticmethod
     def get_all_posts():
         posts_list = list(db.posts.find())
+        print(posts_list)
         return posts_list
   
     
@@ -43,8 +44,8 @@ class Post:
     
 
     @staticmethod
-    def get_one_post(post_id):
-        selected_post = db.posts.find_one({"_id": post_id})
+    def get_one_post(id):
+        selected_post = db.posts.find_one({"_id":id})
         return selected_post
 
 
